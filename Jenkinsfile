@@ -37,6 +37,11 @@ pipeline {
         ])
       }
     }
+    stage('Publish Test Results') {
+    steps {
+        junit 'results/test-results.xml'
+    }
+}
 
     stage('Archive Artifacts') {
       steps {

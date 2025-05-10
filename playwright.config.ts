@@ -24,8 +24,8 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['list'], // Jenkins
-    ['html', { outputFolder: 'playwright-report', open: 'never' }], // HTML
-    ['junit', { outputFile: 'results/test-results.xml' }], // Junit
+    ['html', { outputFolder: 'playwright-report', open: 'never' }],
+    ['junit', { outputFile: 'results/test-results.xml' }],
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
