@@ -14,14 +14,14 @@ pipeline {
 
     stage('Install dependencies') {
       steps {
-        bat 'npm ci' //  Use bat only
+        bat 'npm ci'
       }
     }
 
     stage('Run Playwright tests') {
       steps {
         bat 'npx playwright install' 
-        bat 'npx playwright test --reporter=html'
+        bat 'npx playwright test'
       }
     }
 
@@ -37,22 +37,23 @@ pipeline {
         ])
       }
     }
+
     stage('Publish Test Results') {
-    steps {
+      steps {
         junit 'results/test-results.xml'
+      }
     }
-}
 
     stage('Archive Artifacts') {
       steps {
-        archiveArtifacts artifacts: 'test-results/**/*, playwright-report/**/*', allowEmptyArchive: true
+        archiveArtifacts artifacts: 'results/**/*, playwright-report/**/*', allowEmptyArchive: true
       }
     }
   }
 
   post {
     always {
-      junit 'test-results/**/*.xml' 
+      junit 'results/test-results.xml' 
     }
 
     failure {
