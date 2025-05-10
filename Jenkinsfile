@@ -49,14 +49,15 @@ pipeline {
         archiveArtifacts artifacts: 'results/**/*, playwright-report/**/*', allowEmptyArchive: true
       }
     }
-  }
-
-  stage('Debug file listing') {
+    stage('Debug file listing') {
   steps {
     bat 'dir /s /b > filelist.txt'
     archiveArtifacts artifacts: 'filelist.txt'
   }
 }
+  }
+
+  
 
   post {
     always {
