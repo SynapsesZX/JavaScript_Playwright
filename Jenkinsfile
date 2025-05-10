@@ -15,15 +15,21 @@ pipeline {
     stage('Install dependencies') {
       steps {
         bat 'npm ci'
+        bat 'npx playwright install' 
       }
     }
 
-    stage('Run Playwright tests') {
-      steps {
-        bat 'npx playwright install' 
-        bat 'npx playwright test'
-      }
-    }
+      stage('Run API Tests') {
+            steps {
+                bat 'npx playwright test tests/apiPetstore'
+            }
+        }
+
+        stage('Run UI Tests') {
+            steps {
+                bat 'npx playwright test tests/Rozetka'
+            }
+        }
 
     stage('Publish HTML Report') {
       steps {
