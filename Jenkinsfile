@@ -53,5 +53,5 @@ pipeline {
     failure {
       echo 'Build failed. Check the report.'
     }
- git branch -r }
+  }
 }
