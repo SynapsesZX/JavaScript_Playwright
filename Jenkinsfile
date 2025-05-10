@@ -40,7 +40,7 @@ pipeline {
 
     stage('Publish Test Results') {
       steps {
-        junit 'results/test-results.xml'
+        junit 'test-results.xml'
       }
     }
 
@@ -50,6 +50,13 @@ pipeline {
       }
     }
   }
+
+  stage('Debug file listing') {
+  steps {
+    bat 'dir /s /b > filelist.txt'
+    archiveArtifacts artifacts: 'filelist.txt'
+  }
+}
 
   post {
     always {
