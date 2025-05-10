@@ -8,7 +8,7 @@ class RozetkaLogin extends BasePage {
   }
 
   async clickOpenSocialButton() {
-    await this.page.locator('.social-buttons .social-buttons__button-open').click();
+    await this.page.locator('.social-buttons button.social-buttons__button-open').click();
   }
 
   async clickOpenEmailButton() {

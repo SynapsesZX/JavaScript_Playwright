@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="8.7778339999998">
+<testsuite name="Rozetka\test_rozetka_login_page.spec.ts" timestamp="2025-05-10T16:03:24.840Z" hostname="chromium" tests="1" failures="0" skipped="0" time="6.807" errors="0">
+<testcase name="Test Rozetka Login Page › Login With Invalid Required Data" classname="Rozetka\test_rozetka_login_page.spec.ts" time="6.807">
+</testcase>
+</testsuite>
+</testsuites>
