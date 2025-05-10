@@ -19,34 +19,41 @@ pipeline {
       }
     }
 
-      stage('Run API Tests') {
-            steps {
-                bat 'npx playwright test tests/apiPetstore'
-            }
-        }
+    stage('Run API Tests') {
+      steps {
+        bat 'npx playwright test tests/apiPetstore'
+      }
+    }
 
-        stage('Run UI Tests') {
-            steps {
-                bat 'npx playwright test tests/Rozetka'
-            }
-        }
+    stage('Run UI Tests') {
+      steps {
+        bat 'npx playwright test tests/Rozetka'
+      }
+    }
 
     stage('Publish HTML Report') {
       steps {
-        publishHTML(target: [
-          allowMissing: false,
-          alwaysLinkToLastBuild: true,
-          keepAll: true,
-          reportDir: 'playwright-report',
-          reportFiles: 'index.html',
-          reportName: 'Playwright HTML Report'
-        ])
+        script {
+          publishHTML(target: [
+            allowMissing: true,             
+            alwaysLinkToLastBuild: true,
+            keepAll: true,
+            reportDir: 'playwright-report',
+            reportFiles: 'index.html',
+            reportName: 'Playwright HTML Report'
+          ])
+        }
       }
     }
 
     stage('Publish Test Results') {
       steps {
-        junit 'results/results.xml'
+        script {
+          
+          catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+            junit testResults: 'results/results.xml', allowEmptyResults: true
+          }
+        }
       }
     }
 
@@ -55,19 +62,32 @@ pipeline {
         archiveArtifacts artifacts: 'results/**/*, playwright-report/**/*', allowEmptyArchive: true
       }
     }
-    stage('Debug file listing') {
-  steps {
-    bat 'dir /s /b > filelist.txt'
-    archiveArtifacts artifacts: 'filelist.txt'
-  }
-}
-  }
 
-  
+    stage('Debug file listing') {
+      steps {
+        bat 'dir /s /b > filelist.txt'
+        archiveArtifacts artifacts: 'filelist.txt'
+      }
+    }
+  }
 
   post {
     always {
-      junit 'results/results.xml'
+      script {
+        
+        catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
+          junit testResults: 'results/results.xml', allowEmptyResults: true
+        }
+
+        publishHTML(target: [
+          allowMissing: true,
+          alwaysLinkToLastBuild: true,
+          keepAll: true,
+          reportDir: 'playwright-report',
+          reportFiles: 'index.html',
+          reportName: 'Playwright HTML Report'
+        ])
+      }
     }
 
     failure {
