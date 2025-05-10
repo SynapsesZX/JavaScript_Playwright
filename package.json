@@ -4,6 +4,8 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
+    "test": "npx playwright test",
+    "test:ci": "npx playwright test --reporter=list,junit",
     "format": "prettier --write \"**/*.{ts,tsx}\""
   },
   "keywords": [],
