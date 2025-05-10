@@ -67,7 +67,7 @@ pipeline {
 
   post {
     always {
-      junit 'results/test-results.xml' 
+      junit 'results/results.xml'
     }
 
     failure {
