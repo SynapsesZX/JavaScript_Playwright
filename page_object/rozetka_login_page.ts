@@ -4,7 +4,7 @@ import { LoginData } from '../globals/globals';
 
 class RozetkaLogin extends BasePage {
   async clickRegistrationIcon() {
-    await this.page.locator('.header-actions button.header__button').click();
+    await this.page.locator('.header-actions button.header__button').click({ timeout: 2000 });
   }
 
   async clickOpenSocialButton() {

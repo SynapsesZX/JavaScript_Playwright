@@ -1,4 +1,4 @@
-import { test, expect } from '@playwright/test';
+import { test, expect } from '../../fixtures/rozetka';
 import { RozetkaLogin } from '../../page_object/rozetka_login_page';
 
 test.describe('Test Rozetka Login Page', () => {
@@ -16,4 +16,6 @@ test.describe('Test Rozetka Login Page', () => {
     await user.clickSubmitButton();
     await user.userIsNotRegisteredErrorMessageDisplayed();
   });
+
+  test('Login With fixture', async ({ loggedInPage }) => {});
 });
