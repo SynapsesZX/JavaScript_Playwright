@@ -3,11 +3,11 @@ import { Page } from '@playwright/test';
 import { RozetkaLogin } from '../page_object/rozetka_login_page';
 
 type MyFixtures = {
-  loggedInPage: Page;
+  LoginWithInvalidCredentials: Page;
 };
 
 const test = base.extend<MyFixtures>({
-  loggedInPage: async ({ page }, use) => {
+  LoginWithInvalidCredentials: async ({ page }, use) => {
     const user = new RozetkaLogin(page);
     await user.openLink('https://rozetka.com.ua/');
     await user.clickRegistrationIcon();

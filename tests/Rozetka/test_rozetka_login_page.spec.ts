@@ -17,5 +17,5 @@ test.describe('Test Rozetka Login Page', () => {
     await user.userIsNotRegisteredErrorMessageDisplayed();
   });
 
-  test('Login With fixture', async ({ loggedInPage }) => {});
+  test('Login With fixture', async ({ LoginWithInvalidCredentials }) => {});
 });
