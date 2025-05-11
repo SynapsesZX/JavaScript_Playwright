@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="9.105890000000596">
-<testsuite name="Rozetka\test_rozetka_login_page.spec.ts" timestamp="2025-05-11T12:29:08.704Z" hostname="chromium" tests="1" failures="0" skipped="0" time="7.105" errors="0">
-<testcase name="Test Rozetka Login Page › Login With Invalid Required Data" classname="Rozetka\test_rozetka_login_page.spec.ts" time="7.105">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="9.351992000000552">
+<testsuite name="Rozetka\test_rozetka_login_page.spec.ts" timestamp="2025-05-11T13:46:21.848Z" hostname="chromium" tests="1" failures="0" skipped="0" time="7.313" errors="0">
+<testcase name="Test Rozetka Login Page › Login With fixture" classname="Rozetka\test_rozetka_login_page.spec.ts" time="7.313">
 </testcase>
 </testsuite>
 </testsuites>

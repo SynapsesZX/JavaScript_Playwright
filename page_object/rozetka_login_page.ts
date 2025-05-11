@@ -1,6 +1,5 @@
 import { expect, Page } from '@playwright/test';
 import { BasePage } from './base_page';
-import { LoginData } from '../globals/globals';
 
 class RozetkaLogin extends BasePage {
   async clickRegistrationIcon() {
@@ -15,11 +14,11 @@ class RozetkaLogin extends BasePage {
     await this.page.locator('button[title="Email"]').click();
   }
 
-  async writeInvalidDataInEmailInputField() {
-    await this.page.locator('#email').fill(LoginData.invalidEmail);
+  async writeDataInEmailInputField(email: string) {
+    await this.page.locator('#email').fill(email);
   }
-  async writeInvalidDataInPasswordInputField() {
-    await this.page.locator('#password').fill(LoginData.invalidPassword);
+  async writeDataInPasswordInputField(password: string) {
+    await this.page.locator('#password').fill(password);
   }
 
   async clickSubmitButton() {
